@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import { useLoaderData } from "react-router-dom";
 import reactLogo from './assets/react.svg'
 import './App.css'
-import { getPopular } from './content'
+import { TMDB } from './helpers/TMDB'
 
 export async function loader({ request }) {
   const url = new URL(request.url);
   const search = url.searchParams.get("search");
-  const popular = await getPopular();
+  const popular = await TMDB.getPopularMovies();
   console.log(popular);
   return { popular, search };
 }
