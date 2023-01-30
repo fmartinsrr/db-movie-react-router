@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import { TMDB } from '../helpers/TMDB'
 
 export function MovieCard({ movie }) {
-  //console.log(movie);
-
+  
   return (
-    <div className="card">
+    <Link to={`../movie/${movie.id}`}>
+    <div className="card" >
       <div className="card-image">
         <figure className="image is-4by2">
           <img src={ TMDB.getFullAssetUrl(movie.backdrop_path) } alt="Placeholder image" />
@@ -25,5 +26,6 @@ export function MovieCard({ movie }) {
         </div> 
       </div>
     </div>
+    </Link>
   );
 }

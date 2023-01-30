@@ -30,6 +30,10 @@ export const TMDB = {
     // https://developers.themoviedb.org/3/search/search-movies
     return performRequest('/search/movie', { query });
   },
+  getMovieDetails: async function(movieId) {
+    // https://developers.themoviedb.org/3/movies/get-movie-details
+    return performRequest('/movie/'+movieId);
+  },
   getFullAssetUrl: function(path, original=false) {
     if (path) {
       const API_KEY = import.meta.env.VITE_API_KEY_TMDB_V3;

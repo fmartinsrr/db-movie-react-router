@@ -44,7 +44,7 @@ export default function Results() {
       { movies.length ? (
         <div className="columns">
           { movies.slice(0, 5).map((movie) => {
-            return <div key={movie.id} className="column">
+            return <div key={movie.id} className="column" >
               <MovieCard movie={movie}/>
             </div>
           })}
