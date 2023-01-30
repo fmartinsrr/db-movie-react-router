@@ -7,6 +7,7 @@ import {
 import Home, { loader as homeLoader } from './pages/Home'
 import Results, { loader as resultsLoader} from './pages/Results'
 import 'bulma/css/bulma.min.css';
+import './main.css';
 
 const router = createBrowserRouter([
   {

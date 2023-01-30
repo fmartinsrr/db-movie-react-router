@@ -31,7 +31,12 @@ export const TMDB = {
     return performRequest('/search/movie', { query });
   },
   getFullAssetUrl: function(path, original=false) {
-    const API_KEY = import.meta.env.VITE_API_KEY_TMDB_V3;
-    return "https://image.tmdb.org/t/p/" + (original ? "original" : "w500")  + "/" + path;
+    if (path) {
+      const API_KEY = import.meta.env.VITE_API_KEY_TMDB_V3;
+      return "https://image.tmdb.org/t/p/" + (original ? "original" : "w500")  + "/" + path;
+    }
+    else {
+      return "https://via.placeholder.com/250x140?text=";
+    }
   }
 }
