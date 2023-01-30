@@ -1,4 +1,5 @@
-import { useLoaderData } from "react-router-dom";
+import { useState } from 'react';
+import { useLoaderData, Form, redirect } from "react-router-dom";
 import { TMDB } from '../helpers/TMDB'
 import { MovieCard } from "../components/MovieCard";
 
@@ -11,15 +12,22 @@ export async function loader() {
 
 export default function Home() {
   const { movies, status } = useLoaderData();
+  const [ query, setQuery] = useState("");
   
   return (
     <div className="container mt-6">
-      <div className="level">
-        <div className="level-item">
-          <input className="input mr-1" type="text" placeholder="Find a movie" />
-          <button className="button is-success">Search</button>
+      <Form action="results" onSubmit={ (event) => {
+        if (query) {} else {
+          event.preventDefault();
+        }
+      }}>
+        <div className="level">
+          <div className="level-item">
+            <input name="search" className="input mr-1" type="text" placeholder="Find a movie" value={query} onChange={ event => setQuery(event.target.value) } />
+            <button className="button is-success">Search</button>
+          </div>
         </div>
-      </div>
+      </Form>
       <p className="title is-4 mt-6">Popular Movies</p>
       { movies.length ? (
         <div className="columns">
