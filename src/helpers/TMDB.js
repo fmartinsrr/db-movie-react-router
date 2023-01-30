@@ -17,7 +17,7 @@ async function performRequest(path, params) {
   } 
   catch (error) {
     console.error(error);
-    return null;
+    return { status: 404 };
   }
 }
 
@@ -25,5 +25,9 @@ export const TMDB = {
   getPopularMovies: async function() {
     // https://developers.themoviedb.org/3/movies/get-popular-movies
     return performRequest('/movie/popular');
+  },
+  getFullAssetUrl: function(path, original=true) {
+    const API_KEY = import.meta.env.VITE_API_KEY_TMDB_V3;
+    return "https://image.tmdb.org/t/p/" + (original ? "original" : "w500")  + "/" + path;
   }
 }

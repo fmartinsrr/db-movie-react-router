@@ -4,14 +4,14 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import App, { loader as appLoader} from './App'
-import './index.css'
+import Home, { loader as homeLoader} from './pages/Home'
+import 'bulma/css/bulma.min.css';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-    loader: appLoader
+    element: <Home />,
+    loader: homeLoader
   }
 ]);
 
