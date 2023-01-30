@@ -1,7 +1,5 @@
-import { useEffect } from "react";
-import { Form, useLoaderData, useNavigation } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { TMDB } from '../helpers/TMDB'
-import { MovieCard } from "../components/MovieCard";
 
 export async function loader({ params }) {
   const response = await TMDB.getMovieDetails(params.movieId);
@@ -13,10 +11,14 @@ export async function loader({ params }) {
 
 export default function Results() {
   const { details, status } = useLoaderData();
+  const navigate = useNavigate();
 
   return (
     <div className="container mt-6">
       <p className="title is-4 mt-6">{details.title}</p>
+      <button type="button" onClick={() => {
+            navigate(-1);
+        }}>Back</button>
     </div>
   )
 }
