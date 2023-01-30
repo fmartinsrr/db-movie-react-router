@@ -8,6 +8,7 @@ export async function loader({ request }) {
   const url = new URL(request.url);
   const search = url.searchParams.get("search");
   const popular = await getPopular();
+  console.log(popular);
   return { popular, search };
 }
 
