@@ -1,28 +1,28 @@
 import { Link } from "react-router-dom";
 import { TMDB } from '../helpers/TMDB'
 
-export function MovieCard({ movie }) {
+export function ResultCard({ result }) {
   
   return (
-    <Link to={`../movie/${movie.id}`}>
+    <Link to={`../movie/${result.id}`}>
     <div className="card" >
       <div className="card-image">
         <figure className="image is-4by2">
-          <img src={ TMDB.getFullAssetUrl(movie.backdrop_path) } alt="Placeholder image" />
+          <img src={ TMDB.getFullAssetUrl(result.backdrop_path) } alt="Placeholder image" />
         </figure>
       </div>
       <div className="card-content">
         <div className="media">
           <div className="media-content card-title">
-            <p className="title is-4">{movie.title}</p>
+            <p className="title is-4">{result.title}</p>
           </div>
         </div>
         <div className="content">          
           <p className="card-description">
-            { movie.overview } 
+            { result.overview } 
           </p>
           <p>
-            <b>Release date: </b>{ movie.release_date}
+            <b>Release date: </b>{ result.release_date}
           </p>
         </div> 
       </div>
