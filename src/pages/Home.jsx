@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLoaderData, Form, redirect } from "react-router-dom";
+import { useLoaderData, Form } from "react-router-dom";
 import { TMDB } from '../helpers/TMDB'
 import { MovieCard } from "../components/MovieCard";
 

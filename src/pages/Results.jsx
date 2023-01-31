@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Form, useLoaderData, useNavigation } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
 import { TMDB } from '../helpers/TMDB'
 import { MovieCard } from "../components/MovieCard";
 
-export async function loader({ request, params }) {
+export async function loader({ request }) {
   const url = new URL(request.url);
   const search = url.searchParams.get("search");
   const response = await TMDB.searchMovies(search);
