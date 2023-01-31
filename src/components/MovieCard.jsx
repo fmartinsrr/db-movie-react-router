@@ -21,8 +21,9 @@ export function MovieCard({ result }) {
           <p className="card-description">
             { result.overview } 
           </p>
+          <b>Release date: </b>
           <p>
-            <b>Release date: </b>{ result.release_date}
+            {result.release_date}
           </p>
         </div> 
       </div>

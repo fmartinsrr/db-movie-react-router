@@ -50,6 +50,10 @@ export const TMDB = {
     // https://developers.themoviedb.org/3/movies/get-movie-details
     return performRequest('/tv/'+tvId);
   },
+  getPersonDetails: async function(personId) {
+    // https://developers.themoviedb.org/3/movies/get-movie-details
+    return performRequest('/person/'+personId);
+  },
   getFullAssetUrl: function(path, original) {
     if (path) {
       original = (original === undefined ? false : original);

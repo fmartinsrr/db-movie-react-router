@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { TMDB } from '../helpers/TMDB';
 
 export function PersonCard({ result }) {
-  console.log(result);
 
   return (
+    <Link to={`../person/${result.id}`}>
     <div className="card" >
       <div className="card-image">
         <figure className="image is-4by2">
@@ -36,5 +36,6 @@ export function PersonCard({ result }) {
         </div> 
       </div>
     </div>
+    </Link>
   );
 }

@@ -21,8 +21,9 @@ export function TVCard({ result }) {
             <p className="card-description">
               { result.overview } 
             </p>
+            <b>First air date: </b>
             <p>
-              <b>First air date: </b>{ result.first_air_date}
+              { result.first_air_date}
             </p>
           </div> 
         </div>
