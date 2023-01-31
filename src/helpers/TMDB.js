@@ -28,19 +28,22 @@ export const TMDB = {
   },
   searchMovies: async function(query) {
     // https://developers.themoviedb.org/3/search/search-movies
-    return performRequest('/search/movie', { query });
+    return query ? performRequest('/search/movie', { query }) : { status: 204 };
   },
   getMovieDetails: async function(movieId) {
     // https://developers.themoviedb.org/3/movies/get-movie-details
     return performRequest('/movie/'+movieId);
   },
-  getFullAssetUrl: function(path, original=false) {
+  getFullAssetUrl: function(path, original) {
     if (path) {
+      original = (original === undefined ? false : original);
       const API_KEY = import.meta.env.VITE_API_KEY_TMDB_V3;
-      return "https://image.tmdb.org/t/p/" + (original ? "original" : "w500")  + "/" + path;
+      return "https://image.tmdb.org/t/p/" + (original ? "original" : "w500")  + path;
     }
     else {
-      return "https://via.placeholder.com/250x140?text=";
+      // To get\generate custom placeholders easily.
+      // return "https://via.placeholder.com/250x140?text=";
+      return "/src/assets/250x140.png";
     }
   }
 }

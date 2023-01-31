@@ -17,7 +17,7 @@ export default function Results() {
   const [ query, setQuery] = useState("");
   
   useEffect(() => {
-    setQuery(search);
+    setQuery(search ? search : "");
   }, [search])
   
   return (
