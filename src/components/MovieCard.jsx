@@ -13,16 +13,17 @@ export function MovieCard({ movie }) {
       </div>
       <div className="card-content">
         <div className="media">
-          <div className="media-content">
+          <div className="media-content card-title">
             <p className="title is-4">{movie.title}</p>
           </div>
         </div>
-
-        <div className="content">
-          <p>
-          { movie.overview } 
+        <div className="content">          
+          <p className="card-description">
+            { movie.overview } 
           </p>
-          <b>Release date: </b>{ movie.release_date}
+          <p>
+            <b>Release date: </b>{ movie.release_date}
+          </p>
         </div> 
       </div>
     </div>
