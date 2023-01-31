@@ -8,7 +8,7 @@ export function PersonCard({ result }) {
     <div className="card" >
       <div className="card-image">
         <figure className="image is-4by2">
-          <img src={ TMDB.getFullAssetUrl(result.profile_path) } alt="Placeholder image" />
+          <img className="card-avatar" src={ TMDB.getFullAssetUrl(result.profile_path) } alt="Placeholder image" />
         </figure>
       </div>
       <div className="card-content">
@@ -22,13 +22,15 @@ export function PersonCard({ result }) {
             <b>Known for:</b>
           </p>
           {
-            result.known_for.map( (known) => {
+            result.known_for.slice(0, 3).map( (known) => {
               return known.media_type === "movie" ?
                 <Link key={known.id} to={`../movie/${known.id}`}>
                   <p>{known.title}</p>
                 </Link>
                 :
-                <p>{known.name}</p>
+                <Link key={known.id} to={`../tv/${known.id}`}>
+                  <p>{known.name}</p>
+                </Link>
             })
           }
         </div> 

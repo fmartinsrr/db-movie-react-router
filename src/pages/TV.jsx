@@ -2,14 +2,14 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { TMDB } from '../helpers/TMDB'
 
 export async function loader({ params }) {
-  const response = await TMDB.getMovieDetails(params.movieId);
+  const response = await TMDB.getTVDetails(params.tvId);
   const status = response.status;
   const details = (status === 200 ? response.data : {});
   console.log(details);
   return { details, status }
 }
 
-export default function Movie() {
+export default function TV() {
   const { details, status } = useLoaderData();
   const navigate = useNavigate();
 
@@ -29,8 +29,8 @@ export default function Movie() {
         </div>
       </div>
 
-      <p className="title is-3 mt-3">{details.title}</p>
-      <p><b>Release date: </b>{ details.release_date}</p>
+      <p className="title is-3 mt-3">{details.name}</p>
+      <p><b>First air date: </b>{ details.first_air_date}</p>
       <p className="mt-3">{ details.overview }</p>
       
     </div>

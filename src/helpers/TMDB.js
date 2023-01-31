@@ -46,6 +46,10 @@ export const TMDB = {
     // https://developers.themoviedb.org/3/movies/get-movie-details
     return performRequest('/movie/'+movieId);
   },
+  getTVDetails: async function(tvId) {
+    // https://developers.themoviedb.org/3/movies/get-movie-details
+    return performRequest('/tv/'+tvId);
+  },
   getFullAssetUrl: function(path, original) {
     if (path) {
       original = (original === undefined ? false : original);

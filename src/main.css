@@ -1,3 +1,9 @@
+.card-avatar {
+  height: 13.4em;
+  max-height: 13.4em;
+  object-fit: cover;
+}
+
 .card-title {
   height: 3.3em;
   max-height: 3.3em;
