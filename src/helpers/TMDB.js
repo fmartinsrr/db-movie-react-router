@@ -30,6 +30,18 @@ export const TMDB = {
     // https://developers.themoviedb.org/3/search/search-movies
     return query ? performRequest('/search/movie', { query }) : { status: 204 };
   },
+  searchTV: async function(query) {
+    // https://developers.themoviedb.org/3/search/search-tv-shows
+    return query ? performRequest('/search/tv', { query }) : { status: 204 };
+  },
+  searchPerson: async function(query) {
+    // https://developers.themoviedb.org/3/search/search-people
+    return query ? performRequest('/search/person', { query }) : { status: 204 };
+  },
+  searchAny: async function(query) {
+    // https://developers.themoviedb.org/3/search/multi-search
+    return query ? performRequest('/search/multi', { query }) : { status: 204 };
+  },
   getMovieDetails: async function(movieId) {
     // https://developers.themoviedb.org/3/movies/get-movie-details
     return performRequest('/movie/'+movieId);

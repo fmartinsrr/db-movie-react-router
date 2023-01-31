@@ -1,6 +1,8 @@
-import { ResultCard } from "./ResultCard";
+import { MovieCard } from "./MovieCard";
+import { TVCard } from "./TVCard";
+import { PersonCard } from "./PersonCard";
 
-export function ResultsRow({title, results, emptyMsg}) {
+export function ResultsRow({title, results, type, emptyMsg}) {
 
   return (
     <>
@@ -9,7 +11,9 @@ export function ResultsRow({title, results, emptyMsg}) {
         <div className="columns">
           { results.slice(0, 5).map((result) => {
             return <div key={result.id} className="column" >
-              <ResultCard result={result}/>
+              {(result.media_type || type) == "movie" && <MovieCard result={result} /> }
+              {(result.media_type || type) == "tv" && <TVCard result={result} /> }
+              {(result.media_type || type) == "person" && <PersonCard result={result} /> }
             </div>
           })}
         </div>

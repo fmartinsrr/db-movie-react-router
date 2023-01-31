@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="container mt-6">
       <SearchBar action="results" query={query} setQuery={setQuery}/>
-      <ResultsRow title="Popular Movies" results={movies} emptyMsg="No movies" />
+      <ResultsRow title="Popular Movies" results={movies} type="movie" emptyMsg="No movies" />
     </div>
   )
 }

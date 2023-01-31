@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
-import { TMDB } from '../helpers/TMDB'
+import { TMDB } from '../helpers/TMDB';
 
-export function ResultCard({ result }) {
-  
+export function TVCard({ result }) {
+
   return (
-    <Link to={`../movie/${result.id}`}>
     <div className="card" >
       <div className="card-image">
         <figure className="image is-4by2">
@@ -14,7 +12,7 @@ export function ResultCard({ result }) {
       <div className="card-content">
         <div className="media">
           <div className="media-content card-title">
-            <p className="title is-4">{result.title}</p>
+            <p className="title is-4">{result.name}</p>
           </div>
         </div>
         <div className="content">          
@@ -22,11 +20,10 @@ export function ResultCard({ result }) {
             { result.overview } 
           </p>
           <p>
-            <b>Release date: </b>{ result.release_date}
+            <b>First air date: </b>{ result.first_air_date}
           </p>
         </div> 
       </div>
     </div>
-    </Link>
   );
 }
