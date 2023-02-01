@@ -1,10 +1,11 @@
 import { Form } from "react-router-dom";
 import { useNavigation } from "react-router-dom";
 import { useContext } from "react";
+import { SearchResultsContext } from "./SearchResults"
 
-export function SearchBar({action, context}) {
+export function SearchBar({action}) {
   const navigation = useNavigation();
-  const { query, setQuery, selected, setSelected } = useContext(context);
+  const { query, setQuery, selected, setSelected } = useContext(SearchResultsContext);
 
   const isLoading = navigation.state === "loading";
 

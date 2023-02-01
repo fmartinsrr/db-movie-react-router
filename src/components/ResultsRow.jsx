@@ -2,9 +2,10 @@ import { MovieCard } from "./MovieCard";
 import { TVCard } from "./TVCard";
 import { PersonCard } from "./PersonCard";
 import { useContext } from "react";
+import { SearchResultsContext } from "./SearchResults"
 
-export function ResultsRow({title, emptyMsg, context}) {
-  const { results, resultsType } = useContext(context);
+export function ResultsRow({title, emptyMsg}) {
+  const { results, resultsType } = useContext(SearchResultsContext);
 
   return (
     <>
