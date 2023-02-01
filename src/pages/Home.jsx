@@ -14,6 +14,7 @@ export default function Home() {
   
   return (
     <SearchResults 
+      title="Popular Movies"
       action="results" 
       results={results} 
       currentSearch=""

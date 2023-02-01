@@ -4,7 +4,7 @@ import { ResultsRow } from "../components/ResultsRow";
 
 export const SearchResultsContext = createContext();
 
-export function SearchResults({ action, results, currentSearch, currentSearchType }) {
+export function SearchResults({ title, action, results, currentSearch, currentSearchType }) {
 
   const [ query, setQuery] = useState("");
   const [ queryType, setQueryType] = useState(currentSearchType);
@@ -28,7 +28,7 @@ export function SearchResults({ action, results, currentSearch, currentSearchTyp
     <SearchResultsContext.Provider value={context}>
       <div className="container mt-6">
         <SearchBar action={action}/>
-        <ResultsRow title="Search Result" emptyMsg="No movies" />
+        <ResultsRow title={title} emptyMsg="No movies" />
       </div>
     </SearchResultsContext.Provider>
   )

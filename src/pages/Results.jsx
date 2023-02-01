@@ -32,6 +32,7 @@ export default function Results() {
   
   return (
     <SearchResults 
+      title="Search Results"
       action="../results" 
       results={results} 
       currentSearch={search}
