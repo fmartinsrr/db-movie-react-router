@@ -1,8 +1,11 @@
 import { Form } from "react-router-dom";
 import { useNavigation } from "react-router-dom";
+import { useContext } from "react";
 
-export function SearchBar({action, query, setQuery, selected, setSelected}) {
+export function SearchBar({action, context}) {
   const navigation = useNavigation();
+  const { query, setQuery, selected, setSelected } = useContext(context);
+
   const isLoading = navigation.state === "loading";
 
   return (
@@ -13,8 +16,8 @@ export function SearchBar({action, query, setQuery, selected, setSelected}) {
       }}>
         <div className="level">
           <div className="level-item">
-            <div className={"control" + (isLoading ? " is-loading" : "")}>
-              <input name="search" className="input mr-1" type="text" placeholder="Search for" value={query} onChange={ event => setQuery(event.target.value) } />
+            <div className={"control mr-1" + (isLoading ? " is-loading" : "")}>
+              <input name="search" className="input" type="text" placeholder="Search for" value={query} onChange={ event => setQuery(event.target.value) } />
             </div>
             <div className="select mr-1">
               <select name="by" value={selected} onChange={ event => setSelected(event.target.value )}>
