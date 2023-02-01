@@ -5,7 +5,7 @@ import { SearchResultsContext } from "./SearchResults"
 
 export function SearchBar({action}) {
   const navigation = useNavigation();
-  const { query, setQuery, selected, setSelected } = useContext(SearchResultsContext);
+  const { query, setQuery, queryType, setQueryType } = useContext(SearchResultsContext);
 
   const isLoading = navigation.state === "loading";
 
@@ -21,7 +21,7 @@ export function SearchBar({action}) {
               <input name="search" className="input" type="text" placeholder="Search for" value={query} onChange={ event => setQuery(event.target.value) } />
             </div>
             <div className="select mr-1">
-              <select name="by" value={selected} onChange={ event => setSelected(event.target.value )}>
+              <select name="by" value={queryType} onChange={ event => setQueryType(event.target.value )}>
                 <option value="movie">Movie</option>
                 <option value="tv">TV Series</option>
                 <option value="person">Person</option>

@@ -34,7 +34,7 @@ export default function Results() {
     <SearchResults 
       title="Search Results"
       action="../results" 
-      results={results} 
+      searchResults={results} 
       currentSearch={search}
       currentSearchType={type}
     />
