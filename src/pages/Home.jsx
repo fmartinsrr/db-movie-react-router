@@ -14,7 +14,7 @@ export async function loader() {
 export default function Home() {
   const { movies, status } = useLoaderData();
   const [ query, setQuery] = useState("");
-  
+
   return (
     <div className="container mt-6">
       <SearchBar action="results" query={query} setQuery={setQuery}/>

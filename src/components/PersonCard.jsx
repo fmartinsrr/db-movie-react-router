@@ -4,19 +4,22 @@ import { TMDB } from '../helpers/TMDB';
 export function PersonCard({ result }) {
 
   return (
-    <Link to={`../person/${result.id}`}>
-    <div className="card" >
+    <div className="card full-card" >
+      <Link to={`../person/${result.id}`}>
       <div className="card-image">
         <figure className="image is-4by2">
           <img className="card-avatar" src={ TMDB.getFullAssetUrl(result.profile_path) } alt="Placeholder image" />
         </figure>
       </div>
+      </Link>
       <div className="card-content">
+        <Link to={`../person/${result.id}`}>
         <div className="media">
           <div className="media-content card-title">
             <p className="title is-4">{result.name}</p>
           </div>
         </div>
+        </Link>
         <div className="content">          
           <p>
             <b>Known for:</b>
@@ -36,6 +39,5 @@ export function PersonCard({ result }) {
         </div> 
       </div>
     </div>
-    </Link>
   );
 }

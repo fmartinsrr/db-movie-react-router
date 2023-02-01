@@ -3,7 +3,6 @@ import { TVCard } from "./TVCard";
 import { PersonCard } from "./PersonCard";
 
 export function ResultsRow({title, results, type, emptyMsg}) {
-
   return (
     <>
     <p className="title is-4 mt-6">{title}</p>

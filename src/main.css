@@ -1,3 +1,7 @@
+.full-card {
+  min-height: 463px;
+}
+
 .card-avatar {
   height: 13.4em;
   max-height: 13.4em;

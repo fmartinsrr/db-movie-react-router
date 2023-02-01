@@ -1,7 +1,10 @@
 import { Form } from "react-router-dom";
+import { useNavigation } from "react-router-dom";
 
 export function SearchBar({action, query, setQuery, selected, setSelected}) {
-  
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
+
   return (
     <Form action={action} onSubmit={ (event) => {
         if (query) {} else {
@@ -10,7 +13,9 @@ export function SearchBar({action, query, setQuery, selected, setSelected}) {
       }}>
         <div className="level">
           <div className="level-item">
-            <input name="search" className="input mr-1" type="text" placeholder="Search for" value={query} onChange={ event => setQuery(event.target.value) } />
+            <div className={"control" + (isLoading ? " is-loading" : "")}>
+              <input name="search" className="input mr-1" type="text" placeholder="Search for" value={query} onChange={ event => setQuery(event.target.value) } />
+            </div>
             <div className="select mr-1">
               <select name="by" value={selected} onChange={ event => setSelected(event.target.value )}>
                 <option value="movie">Movie</option>
