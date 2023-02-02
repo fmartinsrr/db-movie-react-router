@@ -9,6 +9,8 @@ import Results, { loader as resultsLoader} from './pages/Results';
 import Movie, { loader as movieLoader} from './pages/Movie';
 import TV, { loader as tvLoader} from './pages/TV';
 import Person, { loader as personLoader} from './pages/Person';
+import TVCredits, { loader as tvCreditsLoader} from './pages/TVCredits';
+
 import 'bulma/css/bulma.min.css';
 import './main.css';
 
@@ -32,6 +34,13 @@ const router = createBrowserRouter([
     path: "tv/:tvId",
     element: <TV />,
     loader: tvLoader,
+    children: [
+      {
+        path: "season/:seasonNumber/credits",
+        element: <TVCredits />,
+        loader: tvCreditsLoader,
+      },
+    ],
   },
   {
     path: "person/:personId",

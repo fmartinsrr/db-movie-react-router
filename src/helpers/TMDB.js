@@ -56,7 +56,7 @@ export const TMDB = {
   },
   getTVCredits: async function(tvId, season_number) {
     //https://developers.themoviedb.org/3/tv-seasons/get-tv-season-aggregate-credits
-    return performRequest('/tv/'+tvId+'/season/'+season_number+'/aggregate_credits');
+    return performRequest(`/tv/${tvId}/season/${season_number}/aggregate_credits`);
   },
   getPersonDetails: async function(personId) {
     // https://developers.themoviedb.org/3/people/get-person-details
