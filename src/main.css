@@ -23,3 +23,12 @@
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 }
+
+.selected_season {
+  color:green;
+  text-decoration-line: underline;
+}
+
+.unselected_season {
+  color:blue;
+}

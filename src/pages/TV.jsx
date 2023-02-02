@@ -1,11 +1,14 @@
-import { useLoaderData, useNavigate, Link, NavLink, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLoaderData, useNavigate, Link, NavLink, Outlet, redirect, useLocation } from "react-router-dom";
 import { TMDB } from '../helpers/TMDB'
 
 export async function loader({ params }) {
   const response = await TMDB.getTVDetails(params.tvId);
   const status = response.status;
   const details = (status === 200 ? response.data : {});
-  console.log(details);
+  if (params.seasonNumber === undefined && details.seasons.length) {
+    return redirect("/tv/" + params.tvId + "/season/" + details.seasons[0].season_number + "/credits")
+  }
   return { details, status }
 }
 
@@ -55,13 +58,16 @@ export default function TV() {
           (
           <div>
             <p className="mt-3"><b>Credits by season: </b></p>
+
             <div className="columns ml-0 mt-2">
               { 
               details.seasons.map((season) => {
                 return <div key={season.id} className="mr-3">
-                    <Link to={`season/${season.season_number}/credits`}>
-                      <p>{season.name}</p>
-                    </Link>
+                  <NavLink to={`season/${season.season_number}/credits`}>
+                    {({ isActive }) => (
+                      <p className={ isActive ? "selected_season" : "unselected_season" }>{season.name}</p>
+                    )}
+                  </NavLink>
                   </div>
                 })
               }
@@ -75,7 +81,6 @@ export default function TV() {
         :
         null
       }
-      
       
     </div>
   )
