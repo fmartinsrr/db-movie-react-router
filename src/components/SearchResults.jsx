@@ -22,7 +22,6 @@ const reducer = (state, action) => {
 export function SearchResults({ title, action, searchResults, currentSearch, currentSearchType }) {
 
   const [state, dispatch] = useReducer(reducer, {query: currentSearch, queryType: currentSearchType, results: searchResults, resultsType: currentSearchType });
-  const { query, queryType,  results, resultsType } = state;
 
   //const [ query, setQuery] = useState("");
   //const [ queryType, setQueryType] = useState(currentSearchType);
@@ -74,14 +73,7 @@ export function SearchResults({ title, action, searchResults, currentSearch, cur
     [dispatch]
   );
 
-  const context = {
-    query,
-    setQuery,
-    queryType,
-    setQueryType,
-    results,
-    resultsType
-  };
+  const context = { ...state, setQuery, setQueryType }
 
   return (
     <SearchResultsContext.Provider value={context}>

@@ -2,15 +2,24 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { TMDB } from '../helpers/TMDB'
 
 export async function loader({ params }) {
-  const response = await TMDB.getMovieDetails(params.movieId);
-  const status = response.status;
-  const details = (status === 200 ? response.data : {});
+  const [details_response, credits_response] = await Promise.all([
+    TMDB.getMovieDetails(params.movieId),
+    TMDB.getMovieCredits(params.movieId)
+  ])
+  
+  const details_status = details_response.status;
+  const details = (details_status === 200 ? details_response.data : {});
   console.log(details);
-  return { details, status }
+
+  const credits_status = credits_response.status;
+  const credits = (credits_status === 200 ? credits_response.data : {});
+  console.log(credits)
+  
+  return { details, details_status, credits, credits_status }
 }
 
 export default function Movie() {
-  const { details, status } = useLoaderData();
+  const { details } = useLoaderData();
   const navigate = useNavigate();
 
   return (

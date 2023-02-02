@@ -46,13 +46,29 @@ export const TMDB = {
     // https://developers.themoviedb.org/3/movies/get-movie-details
     return performRequest('/movie/'+movieId);
   },
+  getMovieCredits: async function(movieId) {
+    // https://developers.themoviedb.org/3/movies/get-movie-credits
+    return performRequest('/movie/'+movieId+'/credits');
+  },
   getTVDetails: async function(tvId) {
     // https://developers.themoviedb.org/3/movies/get-movie-details
     return performRequest('/tv/'+tvId);
   },
+  getTVCredits: async function(tvId, season_number) {
+    //https://developers.themoviedb.org/3/tv-seasons/get-tv-season-aggregate-credits
+    return performRequest('/tv/'+tvId+'/season/'+season_number+'/aggregate_credits');
+  },
   getPersonDetails: async function(personId) {
-    // https://developers.themoviedb.org/3/movies/get-movie-details
+    // https://developers.themoviedb.org/3/people/get-person-details
     return performRequest('/person/'+personId);
+  },
+  getPersonTVCredits: async function(personId) {
+    // https://developers.themoviedb.org/3/people/get-person-tv-credits
+    return performRequest('/person/'+personId+'/tv_credits');
+  },
+  getPersonMovieCredits: async function(personId) {
+    // https://developers.themoviedb.org/3/people/get-person-movie-credits
+    return performRequest('/person/'+personId+'/movie_credits');
   },
   getFullAssetUrl: function(path, original) {
     if (path) {
