@@ -19,7 +19,7 @@ const reducer = (state, action) => {
   }
 }
 
-export function SearchResults({ title, action, searchResults, currentSearch, currentSearchType }) {
+export function SearchResults({ title, searchResults, currentSearch, currentSearchType }) {
 
   const [state, dispatch] = useReducer(reducer, {query: currentSearch, queryType: currentSearchType, results: searchResults, resultsType: currentSearchType });
 
@@ -78,7 +78,7 @@ export function SearchResults({ title, action, searchResults, currentSearch, cur
   return (
     <SearchResultsContext.Provider value={context}>
       <div className="container mt-6">
-        <SearchBar action={action}/>
+        <SearchBar />
         <ResultsRow title={title} emptyMsg="No movies" />
       </div>
     </SearchResultsContext.Provider>

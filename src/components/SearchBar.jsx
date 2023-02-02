@@ -3,14 +3,14 @@ import { useNavigation } from "react-router-dom";
 import { useContext } from "react";
 import { SearchResultsContext } from "./SearchResults"
 
-export function SearchBar({action}) {
+export function SearchBar() {
   const navigation = useNavigation();
   const { query, setQuery, queryType, setQueryType } = useContext(SearchResultsContext);
 
   const isLoading = navigation.state === "loading";
 
   return (
-    <Form action={action} onSubmit={ (event) => {
+    <Form action="/results" onSubmit={ (event) => {
         if (query) {} else {
           event.preventDefault();
         }

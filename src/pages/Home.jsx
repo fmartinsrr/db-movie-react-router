@@ -15,7 +15,6 @@ export default function Home() {
   return (
     <SearchResults 
       title="Popular Movies"
-      action="results" 
       searchResults={results}
       currentSearch=""
       currentSearchType="movie"
