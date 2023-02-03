@@ -63,7 +63,7 @@ export default function TV() {
               { 
               details.seasons.map((season) => {
                 return <div key={season.id} className="mr-3">
-                  <NavLink to={`season/${season.season_number}/credits`}>
+                  <NavLink to={`season/${season.season_number}/credits`} replace>
                     {({ isActive }) => (
                       <p className={ isActive ? "selected_season" : "unselected_season" }>{season.name}</p>
                     )}
