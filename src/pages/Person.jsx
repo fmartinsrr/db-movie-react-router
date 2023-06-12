@@ -23,7 +23,7 @@ export async function loader({ params }) {
   return { details, details_status, credits_tv, credits_tv_status, credits_movie, credits_movie_status }
 }
 
-export default function TV() {
+export default function Person() {
   const { details, status } = useLoaderData();
   const navigate = useNavigate();
 
