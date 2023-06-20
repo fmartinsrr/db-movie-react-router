@@ -78,6 +78,7 @@ export function SearchResults({ title, searchResults, statusCode, currentSearch,
   return (
     <SearchResultsContext.Provider value={context}>
       <div className="container mt-6">
+        <button id="pwa-install-button" className="button hidden">Install App</button>
         <SearchBar />
         <ResultsRow title={title} emptyMsg="No movies" />
       </div>

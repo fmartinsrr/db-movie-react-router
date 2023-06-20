@@ -32,3 +32,7 @@
 .unselected_season {
   color:blue;
 }
+
+.hidden {
+  visibility: hidden;
+}
