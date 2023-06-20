@@ -26,8 +26,23 @@ self.addEventListener("install", event => {
   event.waitUntil(preCacheResources());
 });
 
+// Use this event to clean up outdated caches.
 self.addEventListener("activate", event => {
 	console.log("Service worker activated");
+  async function deleteOldCaches() {
+    // List all caches by their names.
+    const names = await caches.keys();
+    await Promise.all(names.map(name => {
+      if (name !== CACHE_NAME) {
+        // If a cache's name is the current name, delete it.
+        return caches.delete(name);
+      }
+    }));
+  }
+
+  // Asks the browser to wait for the task in the promise to resolve (fulfilled or failed)
+  // before terminating the service worker process.
+  event.waitUntil(deleteOldCaches());
 });
  
 // We don't need to call the fetch.
