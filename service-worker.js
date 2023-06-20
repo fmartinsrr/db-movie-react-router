@@ -47,6 +47,25 @@ self.addEventListener("activate", event => {
  
 // We don't need to call the fetch.
 // By design, without any return the service worker will fallback to the default behaviour.
+
 self.addEventListener("fetch", event => {
-	console.log("Service worker fetch");
+	console.log("Service worker fetch - Serving offline page");
+  async function navigateOrDisplayOfflinePage() {
+    try {
+      // Try to load the page from the network.
+      const networkResponse = await fetch(event.request);
+      return networkResponse;
+    } catch (error) {
+      // The network call failed, the device is offline.
+      const cache = await caches.open(CACHE_NAME);
+      const cachedResponse = await cache.match("offline.html");
+      return cachedResponse;
+    }
+  }
+
+  // Only call event.respondWith() if this is a navigation request
+  // for an HTML page.
+  if (event.request.mode === 'navigate') {
+    event.respondWith(navigateOrDisplayOfflinePage());
+  }
 });
