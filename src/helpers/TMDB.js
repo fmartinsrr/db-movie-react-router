@@ -16,8 +16,13 @@ async function performRequest(path, params) {
     return response;
   } 
   catch (error) {
-    console.error(error);
-    return { status: 404 };
+    if (error.response) {
+      return { status: error.response.status };
+    }
+    else {
+      console.error(error);
+      return { status: 404 };
+    }
   }
 }
 

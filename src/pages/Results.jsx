@@ -39,6 +39,7 @@ export default function Results() {
     <SearchResults 
       title="Search Results"
       searchResults={results} 
+      statusCode={status}
       currentSearch={search}
       currentSearchType={type}
     />

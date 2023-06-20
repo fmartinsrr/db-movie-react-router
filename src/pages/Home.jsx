@@ -16,6 +16,7 @@ export default function Home() {
     <SearchResults 
       title="Popular Movies"
       searchResults={results}
+      statusCode={status}
       currentSearch=""
       currentSearchType="movie"
     />

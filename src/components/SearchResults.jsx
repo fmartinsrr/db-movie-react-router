@@ -19,7 +19,7 @@ const reducer = (state, action) => {
   }
 }
 
-export function SearchResults({ title, searchResults, currentSearch, currentSearchType }) {
+export function SearchResults({ title, searchResults, statusCode, currentSearch, currentSearchType }) {
 
   const [state, dispatch] = useReducer(reducer, {query: currentSearch, queryType: currentSearchType, results: searchResults, resultsType: currentSearchType });
 
