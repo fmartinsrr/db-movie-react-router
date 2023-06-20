@@ -69,3 +69,19 @@ self.addEventListener("fetch", event => {
     event.respondWith(navigateOrDisplayOfflinePage());
   }
 });
+
+
+self.addEventListener("fetch", event => {
+  console.log("Service worker fetch - Cache strategy - Cache first");
+  async function serveCacheThenFetch() {
+    const cache = await caches.open(CACHE_NAME);
+    const cachedResponse = await cache.match(event.request);
+    return cachedResponse || await fetch(event.request);
+  }
+	
+  const url = new URL(event.request.url);
+  // For any resource we will try to return cached before fetch.
+  if (event.request.mode !== 'navigate') {
+    event.respondWith(serveCacheThenFetch());
+  }
+});
