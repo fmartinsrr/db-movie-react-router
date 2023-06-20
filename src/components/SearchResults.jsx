@@ -80,7 +80,7 @@ export function SearchResults({ title, searchResults, statusCode, currentSearch,
       <div className="container mt-6">
         <button id="pwa-install-button" className="button hidden">Install App</button>
         <SearchBar />
-        <ResultsRow title={title} emptyMsg="No movies" />
+        <ResultsRow title={title} emptyMsg={ statusCode === 599 ? "No internet connection, perform search to retry." : "No movies" } />
       </div>
     </SearchResultsContext.Provider>
   )

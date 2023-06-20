@@ -82,7 +82,29 @@ self.addEventListener("fetch", event => {
 	
   const url = new URL(event.request.url);
   // For any resource we will try to return cached before fetch.
-  if (event.request.mode !== 'navigate') {
+  if (event.request.mode !== 'navigate' && url.host !== 'api.themoviedb.org') {
     event.respondWith(serveCacheThenFetch());
+  }
+});
+
+self.addEventListener("fetch", event => {
+  console.log("Service worker fetch - Serving custom response");
+	async function requestOrReturnEmptyResponse() {
+    try {
+      // Try to perform the request from the network.
+      const networkResponse = await fetch(event.request);
+      return networkResponse;
+    } catch (error) {
+			const emptyResponse = new Response(JSON.stringify({}), {
+        	headers: {'Content-Type': 'application/json'},
+	        status: 599
+  	    });
+      return emptyResponse;
+    }
+  }
+  
+  const url = new URL(event.request.url);
+  if (event.request.method === 'GET' && url.host === 'api.themoviedb.org') {
+    event.respondWith(requestOrReturnEmptyResponse());
   }
 });
