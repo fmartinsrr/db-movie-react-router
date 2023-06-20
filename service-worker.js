@@ -4,8 +4,9 @@ const OFFLINE_VERSION = 1;
 
 // By including the favicon we will prevent an error for this asset.
 const PRE_CACHED_RESOURCES = [
-	"offline.html",
-	"offline.css"
+  "favicon.ico",
+  "offline.html",
+  "offline.css"
 ];
 
 const CACHE_NAME = "offline_v1";
